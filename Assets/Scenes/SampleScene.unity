@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientsListParent: {fileID: 700362281}
+  ingredientGroupDisplayPrefab: {fileID: 1095198338949726611, guid: 7ce939952ae76b04b86cec0132f25f32, type: 3}
   ingredientDisplayPrefab: {fileID: 8138269542338546248, guid: 9cc71ea0b67d5ca42b897c275cb110be, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -869,11 +870,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 16
-    m_Right: 16
+    m_Right: 32
     m_Top: 16
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 16
+  m_Spacing: 32
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1

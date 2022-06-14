@@ -8,6 +8,7 @@ public class IngredientsPanelManager : MonoBehaviour
     public Transform ingredientsListParent;
 
     [Header("Prefabs")]
+    public GroupDisplay ingredientGroupDisplayPrefab;
     public IIngredientDisplay ingredientDisplayPrefab;
 
     void Start()
@@ -16,10 +17,14 @@ public class IngredientsPanelManager : MonoBehaviour
         
         foreach(var typeGroup in ingredientsByType)
         {
-            foreach(var ingredient in typeGroup)
+            var newGroupDisplay = Instantiate(ingredientGroupDisplayPrefab, ingredientsListParent);
+            newGroupDisplay.SetUpGroup(typeGroup.Key.ingredientTypeDisplayName, typeGroup.Key.ingredientTypeDisplayColor);
+
+            foreach (var ingredient in typeGroup)
             {
-                var newIngredientDisplay = Instantiate(ingredientDisplayPrefab, ingredientsListParent);
+                var newIngredientDisplay = Instantiate(ingredientDisplayPrefab);
                 newIngredientDisplay.SetIngredient(ingredient, true);
+                newGroupDisplay.AddToGroup(newIngredientDisplay.gameObject);
             }
         }
     }
