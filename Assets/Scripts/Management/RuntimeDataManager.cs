@@ -5,16 +5,25 @@ using System.Linq;
 
 public class RuntimeDataManager : MonoBehaviour
 {
+    public static RuntimeDataManager instance;
+
     [Header("Data")]
     public IngredientsLibrary ingredientsLibrary;
 
     [Header("Runtime")]
     public List<IngredientRuntime> ingredients;
+    private bool _ingredientsGenerated= false;
 
 
     #region Ingredients
 
-    public void GenerateIngredients()
+    private void WarmupIngredients()
+    {
+        if (!_ingredientsGenerated)
+            GenerateIngredients();
+    }
+
+    private void GenerateIngredients()
     {
         ingredients = new List<IngredientRuntime>();
 
@@ -22,20 +31,24 @@ public class RuntimeDataManager : MonoBehaviour
             ingredients.Add(new IngredientRuntime(ingredientData));
 
         ingredients = ingredients.OrderBy(ingr => ingr.ingredientDisplayName).ToList();
+
+        _ingredientsGenerated = true;
     }
 
     public ILookup<IngredientTypeData, IngredientRuntime> GetIngredientsByType()
     {
+        WarmupIngredients();
         return ingredients.ToLookup(ingr => ingr.ingredientType);
     }
 
     #endregion
 
 
-    void Start()
+    void Awake()
     {
-        GenerateIngredients();
+        instance = this;
 
+        /*GenerateIngredients();
 
         var ingredientsByType = GetIngredientsByType();
 
@@ -53,6 +66,6 @@ public class RuntimeDataManager : MonoBehaviour
             }
 
             Debug.Log(message);
-        }
+        }*/
     }
 }
