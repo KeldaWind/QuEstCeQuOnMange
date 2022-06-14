@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb48bfa42e3e45444ace315ffa9a6a12, type: 3}
+  m_Name: Chicken
+  m_EditorClassIdentifier: 
+  ingredientDisplayName: Poulet
+  ingredientType: {fileID: 11400000, guid: 1a10273d0b8dd3148b91fa4f08e91e73, type: 2}
